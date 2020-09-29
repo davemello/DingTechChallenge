@@ -103,6 +103,18 @@ namespace SeleniumProject.PageObject
             } while (IsNextButtonVisible);
         }
 
+        internal bool CheckIfEmailIsRequiredMessageShown()
+        {
+
+            if (NextButton.Displayed)
+            {
+                ButtonHelper.ClickButton(NextButton);
+            }
+            Logger.Info("Email required error should be shown if field is blank");
+            return _driver.FindElement(By.XPath("//div[@class='errorMessage']")).Displayed;
+            
+        }
+
         internal void EnterEmailAndPassword(Table table)
         {
             var valuesFromTable = table.CreateDynamicSet();
@@ -164,13 +176,19 @@ namespace SeleniumProject.PageObject
 
         internal void ClickLogInButton()
         {
-            LogInButton.Click();
+            ButtonHelper.ClickButton(LogInButton);
+
+        }
+
+        internal void ClickNextButton()
+        {
+            ButtonHelper.ClickButton(NextButton);
         }
 
         #region private methods
         private string CreateRandomEmail()
         {
-              return $"{CreateRandomNumberUsingUnixTimeStamp()}@tryagain.com";
+            return $"{CreateRandomNumberUsingUnixTimeStamp()}@tryagain.com";
         }
 
         private long CreateRandomNumberUsingUnixTimeStamp()

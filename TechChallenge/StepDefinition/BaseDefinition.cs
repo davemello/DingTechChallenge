@@ -126,6 +126,7 @@ namespace SeleniumProject.StepDefinition
             {
                 GenericHelper.TakeScreenShotAsJpeg();
             }
+            ObjectRepository.Driver.Close();
         }
 
         [AfterTestRun]

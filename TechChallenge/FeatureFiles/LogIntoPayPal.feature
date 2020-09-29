@@ -22,7 +22,7 @@ Scenario: Sign in with unconfirmed phone number
 
 @web @all
 Scenario: Try to log in with blank email
-	When user clicks on log in button
+	When user clicks on next button
 	Then user is told that email is required
 
 

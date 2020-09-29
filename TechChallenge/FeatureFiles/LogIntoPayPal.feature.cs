@@ -222,14 +222,10 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 25
- testRunner.When("user clicks on log in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("user clicks on next button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                            "errorMessage"});
-                table4.AddRow(new string[] {
-                            "email is required"});
 #line 26
- testRunner.Then("user gets error message", ((string)(null)), table4, "Then ");
+ testRunner.Then("user is told that email is required", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

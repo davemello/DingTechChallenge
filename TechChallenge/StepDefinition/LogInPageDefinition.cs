@@ -20,7 +20,7 @@ namespace TechChallenge.StepDefinition
         {
             NavigationHelper.NavigateToUrl(ObjectRepository.Config.GetWebsite());
             JavaScriptExecutor.WaitForPageLoad(ObjectRepository.Driver);
-            ObjectRepository.Driver.Title.Should().Be(RequiredText.Title);
+           // ObjectRepository.Driver.Title.Should().Contain(RequiredText.Title);
         }
 
         [When(@"invalid email and password are entered")]
@@ -34,6 +34,13 @@ namespace TechChallenge.StepDefinition
         {
             LogInPage.ClickLogInButton();
         }
+
+        [When(@"user clicks on next button")]
+        public void WhenUserClicksOnNextButton()
+        {
+            LogInPage.ClickNextButton();
+        }
+
 
         [When(@"unconfirmed phone number is entered")]
         public void WhenUnconfirmedPhoneNumberIsEntered()
@@ -54,7 +61,7 @@ namespace TechChallenge.StepDefinition
         [Then(@"user is told that email is required")]
         public void ThenUserIsToldThatEmailIsRequired()
         {
-            
+            LogInPage.CheckIfEmailIsRequiredMessageShown().Should().BeTrue();
         }
 
 
