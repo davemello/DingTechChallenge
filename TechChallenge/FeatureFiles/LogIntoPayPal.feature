@@ -23,7 +23,7 @@ Scenario: Sign in with unconfirmed phone number
 @web @all
 Scenario: Try to log in with blank email
 	When user clicks on next button
-	Then user is told that email is required
+	Then textbox display text turns red as a warning
 
 
 #some more valid scenarios - use email address more than 3 times user gets locked out

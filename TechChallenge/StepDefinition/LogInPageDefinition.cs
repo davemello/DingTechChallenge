@@ -20,7 +20,6 @@ namespace TechChallenge.StepDefinition
         {
             NavigationHelper.NavigateToUrl(ObjectRepository.Config.GetWebsite());
             JavaScriptExecutor.WaitForPageLoad(ObjectRepository.Driver);
-           // ObjectRepository.Driver.Title.Should().Contain(RequiredText.Title);
         }
 
         [When(@"invalid email and password are entered")]
@@ -54,15 +53,15 @@ namespace TechChallenge.StepDefinition
             var set = table.CreateDynamicSet();
             var expectedMsg = set.First().errorMessage;
             var actualText = LogInPage.GetNotificationText();
-
             actualText.Should().Be(expectedMsg);
         }
 
-        [Then(@"user is told that email is required")]
-        public void ThenUserIsToldThatEmailIsRequired()
+        [Then(@"textbox display text turns red as a warning")]
+        public void ThenTextboxDisplayTextTurnsRedAsAWarning()
         {
-            LogInPage.CheckIfEmailIsRequiredMessageShown().Should().BeTrue();
+            LogInPage.IsWarningTextDisplayedInRedIfTextFieldBlank().Should().BeTrue();
         }
+
 
 
 

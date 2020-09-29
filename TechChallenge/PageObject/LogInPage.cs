@@ -25,7 +25,6 @@ namespace SeleniumProject.PageObject
         [FindsBy(How = How.Id, Using = "acceptAllButton")]
         private readonly IWebElement AcceptCookiesButton;
 
-
         [FindsBy(How = How.Id, Using = "password")]
         private readonly IWebElement PasswordTextBox;
 
@@ -37,7 +36,6 @@ namespace SeleniumProject.PageObject
 
         [FindsBy(How = How.XPath, Using = "((//p[@class='notification notification-warning'])[1]")]
         private readonly IWebElement NonConfirmedMobileNotification;
-
 
         readonly WebDriverWait wait;
         string NotificationText;
@@ -53,9 +51,6 @@ namespace SeleniumProject.PageObject
         internal void EnterPhoneNumber()
         {
             var phoneNo = CreateRandomNumberUsingUnixTimeStamp();
-
-            //  TextBoxHelper.ClickAndTypeInTextBox(EmailTextBox, phoneNo.ToString());
-
             bool IsNextButtonVisible = true;
             do
             {
@@ -74,10 +69,10 @@ namespace SeleniumProject.PageObject
                 //check if warning has appeared
                 try
                 {
-
                     if (_driver.FindElements(By.XPath("(//p[@class='notification notification-warning'])[1]")).Count == 1)
                     {
                         NotificationText = _driver.FindElement(By.XPath("(//p[@class='notification notification-warning'])[1]")).Text;
+                        Logger.Info($"Notification text set to: {NotificationText}");
                         return;
                     }
                 }
@@ -85,7 +80,6 @@ namespace SeleniumProject.PageObject
                 {
                     Logger.Info("Warning has not appeared");
                 }
-
 
                 try
                 {
@@ -103,7 +97,7 @@ namespace SeleniumProject.PageObject
             } while (IsNextButtonVisible);
         }
 
-        internal bool CheckIfEmailIsRequiredMessageShown()
+        internal bool IsWarningTextDisplayedInRedIfTextFieldBlank()
         {
 
             if (NextButton.Displayed)
@@ -111,7 +105,12 @@ namespace SeleniumProject.PageObject
                 ButtonHelper.ClickButton(NextButton);
             }
             Logger.Info("Email required error should be shown if field is blank");
-            return _driver.FindElement(By.XPath("//div[@class='errorMessage']")).Displayed;
+            var color = _driver.FindElement(By.XPath("(//*[@class='errorMessage'])[1]")).GetCssValue("color");
+            if(color.Equals("rgba(255, 255, 255, 1)"))
+            {
+                return true;
+            }
+            return false;
             
         }
 
