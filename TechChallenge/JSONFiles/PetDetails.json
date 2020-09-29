@@ -1,0 +1,19 @@
+{
+  "id": 0,
+  "category": {
+    "id": 0,
+    "name": "Fido"
+  },
+  "name": "Cocker Spaniel",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "Pup"
+    }
+  ],
+  "status": "available"
+
+}
