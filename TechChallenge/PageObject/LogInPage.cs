@@ -42,10 +42,14 @@ namespace SeleniumProject.PageObject
 
         public LogInPage(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
-            Logger.Info("Set implicit and explicit wait times");
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
+            if (driver != null)
+            {
+                _driver = driver;
+                Logger.Info("Set implicit and explicit wait times");
+                _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
+            }
+            
         }
 
         internal void EnterPhoneNumber()

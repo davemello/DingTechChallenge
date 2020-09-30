@@ -6,6 +6,7 @@ using SeleniumProject.POCO;
 using SeleniumProject.Settings;
 using System.IO;
 using System.Net;
+using TechChallenge.ComponentHelper;
 using TechTalk.SpecFlow;
 
 namespace SeleniumProject.StepDefinition
@@ -90,6 +91,7 @@ namespace SeleniumProject.StepDefinition
             //check deletion with a get request
             client.Execute(new RestRequest($"/pet/{id}", Method.GET)).StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
+
 
         #region private Methods
         private RestRequest CreateRequest(Method method)

@@ -78,15 +78,12 @@ namespace TechChallenge.FeatureFiles
         [NUnit.Framework.TestCaseAttribute(TestName="Test basic CRUD operations")]
         [NUnit.Framework.DescriptionAttribute("Test basic CRUD operations")]
         [NUnit.Framework.CategoryAttribute("api")]
-        [NUnit.Framework.CategoryAttribute("all")]
         public virtual void TestBasicCRUDOperations()
         {
             string[] tagsOfScenario = new string[] {
-                    "api",
-                    "all"};
+                    "api"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test basic CRUD operations", null, new string[] {
-                        "api",
-                        "all"});
+                        "api"});
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -129,6 +126,42 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 14
  testRunner.And("delete pet details when complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestCaseAttribute(TestName="TestChar")]
+        [NUnit.Framework.DescriptionAttribute("TestChar")]
+        [NUnit.Framework.CategoryAttribute("api")]
+        public virtual void TestChar()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "api"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TestChar", null, new string[] {
+                        "api"});
+#line 17
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 19
+ testRunner.Given("user wants to test char", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             }
             this.ScenarioCleanup();
